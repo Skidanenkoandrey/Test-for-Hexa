@@ -126,41 +126,31 @@
 		'assets/img/kitchen_2.jpg',
     ];
 
-
 	const buttonPrev = document.querySelector('.button_previous');
 	const buttonNext = document.querySelector('.button_forward');
 	const slider = document.querySelector('.slider');
-
+	const totalSlides = backgrounds.length;
     let backgroundUrlId = 0;
 
-	slider.style.background = `url(${backgrounds[backgroundUrlId]})`;
+    const setBackground = (number = 0) => slider.style.background = `url(${backgrounds[number]})`;
+    setBackground();
 
-	const prevSliderBackground = () => {
-		if (backgroundUrlId === 0) {
-			slider.style.background = `url(${backgrounds[backgroundUrlId = 5]})`;
-		} else {
-			slider.style.background = `url(${backgrounds[backgroundUrlId--]})`;
-		}
-	}
-
-	const nextSliderBackground = () => {
-		if (backgroundUrlId === 6) {
-			slider.style.background = `url(${backgrounds[backgroundUrlId = 0]})`;
-		} else if (backgroundUrlId === 0) {
-			slider.style.background = `url(${backgrounds[++backgroundUrlId]})`;
+	function nextSlider(direction){
+        if(direction === 'next'){
+            backgroundUrlId === totalSlides - 1
+                ? setBackground(backgroundUrlId = 0)
+                : setBackground(backgroundUrlId += 1);
         }
-		slider.style.background = `url(${backgrounds[backgroundUrlId++]})`;
-	}
 
-	buttonPrev.addEventListener('click', () => {
-		prevSliderBackground();
-		// change text function
-	});
+        if(direction === 'prev') {
+            backgroundUrlId === 0
+                ? setBackground(backgroundUrlId = 5)
+                : setBackground(backgroundUrlId -= 1)
+        }
+    }
 
-	buttonNext.addEventListener('click', () => {
-		nextSliderBackground();
-		// change text function
-    });
+	buttonNext.addEventListener('click', () => nextSlider('next'));
+	buttonPrev.addEventListener('click', () => nextSlider('prev'));
 </script>
 </body>
 </html>
