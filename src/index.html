@@ -37,14 +37,6 @@
 
 
 <section class="slider" style="transition: all 1s linear;">
-    <div class="slider__picture">
-<!--        <img class="slider__img" src="assets/img/bedroom_1.jpg" alt="bedroom">-->
-<!--        <img class="slider__img" src="assets/img/bedroom_2.jpg" alt="bedroom">-->
-<!--        <img class="slider__img" src="assets/img/living-room_1.jpg" alt="living room">-->
-<!--        <img class="slider__img" src="assets/img/living-room_2.jpg" alt="living room">-->
-<!--        <img class="slider__img" src="assets/img/kitchen_1.jpg" alt="kitchen">-->
-<!--        <img class="slider__img" src="assets/img/kitchen_2.jpg" alt="kitchen">-->
-    </div>
     <div class="slider__inner container">
         <section class="slider__texts">
             <h1 class="slider__title"><span>фотообои</span></h1>
@@ -73,10 +65,12 @@
             <button class="button button_previous">
                 <img src="assets/img/previous-arrow.png" alt="arrow previous" class="button__previous-img">
             </button>
-            <input id="radio-1" type="radio" name="radio" value="1">
-            <input id="radio-2" type="radio" name="radio" value="2">
-            <input id="radio-3" type="radio" name="radio" value="3">
-            <input id="radio-4" type="radio" name="radio" value="4">
+            <input class="input" id="radio-1" type="radio" name="radio" value="1" checked>
+            <input class="input" id="radio-2" type="radio" name="radio" value="2">
+            <input class="input" id="radio-3" type="radio" name="radio" value="3">
+            <input class="input" id="radio-4" type="radio" name="radio" value="4">
+            <input class="input" id="radio-5" type="radio" name="radio" value="5">
+            <input class="input" id="radio-6" type="radio" name="radio" value="6">
             <button class="button button_forward">
                 <img src="assets/img/forward-arrow.png" alt="arrow forward" class="button__forward-img">
             </button>
@@ -116,51 +110,5 @@
         </div>
     </section>
 </div>
-<script>
-    const backgrounds = [
-		'assets/img/bedroom_1.jpg',
-		'assets/img/bedroom_2.jpg',
-		'assets/img/living-room_1.jpg',
-		'assets/img/living-room_2.jpg',
-		'assets/img/kitchen_1.jpg',
-		'assets/img/kitchen_2.jpg',
-    ];
-
-
-	const buttonPrev = document.querySelector('.button_previous');
-	const buttonNext = document.querySelector('.button_forward');
-	const slider = document.querySelector('.slider');
-
-    let backgroundUrlId = 0;
-
-	slider.style.background = `url(${backgrounds[backgroundUrlId]})`;
-
-	const prevSliderBackground = () => {
-		if (backgroundUrlId === 0) {
-			slider.style.background = `url(${backgrounds[backgroundUrlId = 5]})`;
-		} else {
-			slider.style.background = `url(${backgrounds[backgroundUrlId--]})`;
-		}
-	}
-
-	const nextSliderBackground = () => {
-		if (backgroundUrlId === 6) {
-			slider.style.background = `url(${backgrounds[backgroundUrlId = 0]})`;
-		} else if (backgroundUrlId === 0) {
-			slider.style.background = `url(${backgrounds[++backgroundUrlId]})`;
-        }
-		slider.style.background = `url(${backgrounds[backgroundUrlId++]})`;
-	}
-
-	buttonPrev.addEventListener('click', () => {
-		prevSliderBackground();
-		// change text function
-	});
-
-	buttonNext.addEventListener('click', () => {
-		nextSliderBackground();
-		// change text function
-    });
-</script>
 </body>
 </html>
