@@ -73,10 +73,12 @@
             <button class="button button_previous">
                 <img src="assets/img/previous-arrow.png" alt="arrow previous" class="button__previous-img">
             </button>
-            <input id="radio-1" type="radio" name="radio" value="1">
-            <input id="radio-2" type="radio" name="radio" value="2">
-            <input id="radio-3" type="radio" name="radio" value="3">
-            <input id="radio-4" type="radio" name="radio" value="4">
+            <input class="input" id="radio-1" type="radio" name="radio" value="1" checked>
+            <input class="input" id="radio-2" type="radio" name="radio" value="2">
+            <input class="input" id="radio-3" type="radio" name="radio" value="3">
+            <input class="input" id="radio-4" type="radio" name="radio" value="4">
+            <input class="input" id="radio-5" type="radio" name="radio" value="5">
+            <input class="input" id="radio-6" type="radio" name="radio" value="6">
             <button class="button button_forward">
                 <img src="assets/img/forward-arrow.png" alt="arrow forward" class="button__forward-img">
             </button>
@@ -131,26 +133,45 @@
 	const slider = document.querySelector('.slider');
 	const totalSlides = backgrounds.length;
     let backgroundUrlId = 0;
+	const inputs = document.querySelectorAll('input');
 
     const setBackground = (number = 0) => slider.style.background = `url(${backgrounds[number]})`;
     setBackground();
 
 	function nextSlider(direction){
         if(direction === 'next'){
-            backgroundUrlId === totalSlides - 1
-                ? setBackground(backgroundUrlId = 0)
-                : setBackground(backgroundUrlId += 1);
+            if (backgroundUrlId === totalSlides - 1) {
+            	const n = backgroundUrlId = 0;
+				setBackground(n);
+				inputs[n].checked="checked";
+			} else {
+            	const n = backgroundUrlId += 1;
+                setBackground(n);
+				inputs[n].checked="checked";
+            }
         }
 
         if(direction === 'prev') {
-            backgroundUrlId === 0
-                ? setBackground(backgroundUrlId = 5)
-                : setBackground(backgroundUrlId -= 1)
+            if (backgroundUrlId === 0) {
+            	const n = backgroundUrlId = 5;
+				setBackground(n);
+				inputs[n].checked="checked";
+            } else {
+            	const n = backgroundUrlId -= 1;
+				setBackground(n);
+				inputs[n].checked="checked";
+            }
         }
     }
 
 	buttonNext.addEventListener('click', () => nextSlider('next'));
 	buttonPrev.addEventListener('click', () => nextSlider('prev'));
+
+	inputs.forEach((item, id) => {
+		item.addEventListener('click', () => {
+			return setBackground(backgroundUrlId = id);
+	    });
+    });
 </script>
 </body>
 </html>
