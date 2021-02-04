@@ -126,29 +126,30 @@
 		'assets/img/kitchen_2.jpg',
     ];
 
-    let state = 0;
 
 	const buttonPrev = document.querySelector('.button_previous');
 	const buttonNext = document.querySelector('.button_forward');
-
 	const slider = document.querySelector('.slider');
-	slider.style.background = `url(${backgrounds[state]})`;
 
-	const nextSliderBackground = () => {
-		if (state === 6) {
-			slider.style.background = `url(${backgrounds[state = 0]})`;
-		} else if (state === 0) {
-			slider.style.background = `url(${backgrounds[++state]})`;
-        }
-		slider.style.background = `url(${backgrounds[state++]})`;
-	}
+    let backgroundUrlId = 0;
+
+	slider.style.background = `url(${backgrounds[backgroundUrlId]})`;
 
 	const prevSliderBackground = () => {
-		if (state === 0) {
-			slider.style.background = `url(${backgrounds[state = 5]})`;
+		if (backgroundUrlId === 0) {
+			slider.style.background = `url(${backgrounds[backgroundUrlId = 5]})`;
 		} else {
-    		slider.style.background = `url(${backgrounds[state--]})`;
+			slider.style.background = `url(${backgrounds[backgroundUrlId--]})`;
+		}
+	}
+
+	const nextSliderBackground = () => {
+		if (backgroundUrlId === 6) {
+			slider.style.background = `url(${backgrounds[backgroundUrlId = 0]})`;
+		} else if (backgroundUrlId === 0) {
+			slider.style.background = `url(${backgrounds[++backgroundUrlId]})`;
         }
+		slider.style.background = `url(${backgrounds[backgroundUrlId++]})`;
 	}
 
 	buttonPrev.addEventListener('click', () => {
