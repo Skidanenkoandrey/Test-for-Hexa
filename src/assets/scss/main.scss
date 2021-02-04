@@ -158,14 +158,15 @@ body {
     color: $secondary-color;
     font-size: 14px;
     line-height: 1.2;
-    font-weight: $weight-bold;
     letter-spacing: 0.05em;
+    &.active {
+      font-weight: $weight-bold;
+    }
   }
 }
 
 .slider {
   position: relative;
-  top: -44px;
 
   &__picture {
     position: absolute;
@@ -335,7 +336,7 @@ body {
         height: 7px;
         border-radius: 100%;
         background: #000;
-        box-shadow: 0 0 0 0px #fff, 0 0 0 2px #000, 0 0 0 4px #fff;
+        box-shadow: 0 0 0 0 #fff, 0 0 0 2px #000, 0 0 0 4px #fff;
       }
     }
 
@@ -371,5 +372,3 @@ body {
     text-align: center;
   }
 }
-
-
